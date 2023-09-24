@@ -145,6 +145,41 @@
     }%
     \inserttocsubsection\par
 }
+% \defbeamertemplate{section page}{divi}{
+% \begin{tikzpicture}[remember picture,overlay]
+% 	\fill[mLightGray] ($(current page.north west)$) rectangle ($(current page.south)$);
+% 	\fill[mDarkTeal] ($(current page.north)$) rectangle ($(current page.south east)$);
+% \end{tikzpicture}
+% 	\centering
+% 	\begin{minipage}{\textwidth}
+% 		\begin{columns}
+% 			\centering
+% 			\raggedright
+% 			\begin{column}{0.5\textwidth}
+% 				% \insertsectionhead\\[-1ex]
+% 				% \vspace{6pt}
+% 				\par
+% 			\end{column}
+% 			\begin{column}{0.5\textwidth}  %%<--- here
+% 				  % \setbeamercolor{palette secondary}{%
+% 				  % 	use=normal text,
+% 				  % 	fg=white
+% 				  % }
+% 				% \linespread{2.5}
+% 				% [4ex]\insertsubsectionnavigation{0.5\textwidth}
+% 				% \usebeamercolor{white}
+% 				% \setbeamercolor{section in toc}{fg=white}
+% 				% \setbeamercolor{subsection in toc}{fg=gray}
+% 				\usebeamercolor[bg]{alerted text}
+% 				\tableofcontents[currentsection, hideothersubsections]
+% 				\usebeamertemplate*{progress bar in section page}
+% 				\par
+% 			\end{column}
+% 		\end{columns}
+% 	\end{minipage}
+% 	\par
+% 	\vspace{\baselineskip}
+% }
 \newcommand{\sag@disablesectionpage}{
 	\AtBeginSection{
 		% intentionally empty
@@ -255,6 +290,40 @@
   \beamer@framebottomskipautobreak=0pt plus .6\paperheight\relax%
   \def\beamer@initfirstlineunskip{}%
 }
+\providebool{sag@standout}
+\define@key{beamerframe}{standout}[true]{%
+  \booltrue{sag@standout}
+  \begingroup
+    \setkeys{beamerframe}{c}
+    \setkeys{beamerframe}{noframenumbering}
+    \ifbeamercolorempty[bg]{palette primary}{
+      \setbeamercolor{background canvas}{
+        use=palette primary,
+        bg=-palette primary.fg
+      }
+    }{
+      \setbeamercolor{background canvas}{
+        use=palette primary,
+        bg=palette primary.bg
+      }
+    }
+    \setbeamercolor{local structure}{
+      fg=palette primary.fg
+    }
+    \usebeamercolor[fg]{palette primary}
+}
+  \pretocmd{\beamer@reseteecodes}{%
+    \ifbool{sag@standout}{
+      \endgroup
+      \boolfalse{sag@standout}
+    }{}
+  }{}{}
+  \AtBeginEnvironment{beamer@frameslide}{
+    \ifbool{sag@standout}{
+      \centering
+      \usebeamerfont{standout}
+    }{}
+  }
 \sag@inner@setdefaults
 \ProcessPgfPackageOptions{/sag/inner}
 \endinput

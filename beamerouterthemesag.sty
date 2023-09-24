@@ -40,6 +40,7 @@
     progressbar=none,
   }
 }
+% \setbeamertemplate{navigation symbols}{}
 \defbeamertemplate{frame footer}{none}{}
 \defbeamertemplate{frame footer}{custom}[1]{ #1 }
 \defbeamertemplate{frame numbering}{none}{}
@@ -47,15 +48,15 @@
 \defbeamertemplate{frame numbering}{fraction}{
   \insertframenumber/\inserttotalframenumber
 }
-\defbeamertemplate{headline}{plain}{}
-\defbeamertemplate{footline}{plain}{%
-  \begin{beamercolorbox}[wd=\textwidth, sep=3ex]{footline}%
-    \usebeamerfont{page number in head/foot}%
-    \usebeamertemplate*{frame footer}
-    \hfill%
-    \usebeamertemplate*{frame numbering}
-  \end{beamercolorbox}%
-} 
+% \defbeamertemplate{headline}{plain}{}
+% \defbeamertemplate{footline}{plain}{%
+%   \begin{beamercolorbox}[wd=\textwidth, sep=3ex]{footline}%
+%     \usebeamerfont{page number in head/foot}%
+%     \usebeamertemplate*{frame footer}
+%     \hfill%
+%     \usebeamertemplate*{frame numbering}
+%   \end{beamercolorbox}%
+% } 
 
 \setbeamertemplate{footline}
 {

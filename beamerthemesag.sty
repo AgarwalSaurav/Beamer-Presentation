@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{beamerthemesag}
-  [2023/09/24 v1.0 Saurav Agarwal Beamer theme]
+  [2018/11/19 v1.2 Saurav Agarwal Beamer theme]
 \RequirePackage{etoolbox}
 \RequirePackage{pgfopts}
 \pgfkeys{/sag/.cd,
@@ -26,7 +26,6 @@
       \let\sag@plaintitleformat\MakeUppercase%
     },
 }
-
 \pgfkeys{/sag/.cd,
   usetitleprogressbar/.code=\pgfkeysalso{outer/progressbar=frametitle},
   noslidenumbers/.code=\pgfkeysalso{outer/numbering=none},
@@ -49,6 +48,17 @@
   \@ifpackageloaded{pgfplots}{%
     \RequirePackage{pgfplotsthemetol}
   }{}
+}
+\newcommand{\metroset}[1]{\pgfkeys{/sag/.cd,#1}}
+\def\sag@plaintitleformat#1{#1}
+\newcommand{\plain}[2][]{%
+  \PackageWarning{beamerthemesag}{%
+    The syntax `\plain' may be deprecated in a future version of Metropolis.
+    Please use a frame with [standout] instead.
+  }
+  \begin{frame}[standout]{#1}
+    \sag@plaintitleformat{#2}
+  \end{frame}
 }
 \newcommand{\mreducelistspacing}{\vspace{-\topsep}}
 \sag@setdefaults
