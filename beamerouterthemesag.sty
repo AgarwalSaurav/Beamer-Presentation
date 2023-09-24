@@ -1,21 +1,3 @@
-%%
-%% This is file `beamerouterthememetropolis.sty',
-%% generated with the docstrip utility.
-%%
-%% The original source files were:
-%%
-%% beamerouterthememetropolis.dtx  (with options: `package')
-%% ---------------------------------------------------------------------------
-%% Copyright 2015 Matthias Vogelgesang and the LaTeX community. A full list of
-%% contributors can be found at
-%% 
-%%     https://github.com/matze/mtheme/graphs/contributors
-%% 
-%% and the original template was based on the HSRM theme by Benjamin Weiss.
-%% 
-%% This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
-%% International License (https://creativecommons.org/licenses/by-sa/4.0/).
-%% ---------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{beamerouterthemesag}
 \RequirePackage{etoolbox}
@@ -58,7 +40,6 @@
     progressbar=none,
   }
 }
-% \setbeamertemplate{navigation symbols}{}
 \defbeamertemplate{frame footer}{none}{}
 \defbeamertemplate{frame footer}{custom}[1]{ #1 }
 \defbeamertemplate{frame numbering}{none}{}
@@ -66,15 +47,15 @@
 \defbeamertemplate{frame numbering}{fraction}{
   \insertframenumber/\inserttotalframenumber
 }
-% \defbeamertemplate{headline}{plain}{}
-% \defbeamertemplate{footline}{plain}{%
-%   \begin{beamercolorbox}[wd=\textwidth, sep=3ex]{footline}%
-%     \usebeamerfont{page number in head/foot}%
-%     \usebeamertemplate*{frame footer}
-%     \hfill%
-%     \usebeamertemplate*{frame numbering}
-%   \end{beamercolorbox}%
-% } 
+\defbeamertemplate{headline}{plain}{}
+\defbeamertemplate{footline}{plain}{%
+  \begin{beamercolorbox}[wd=\textwidth, sep=3ex]{footline}%
+    \usebeamerfont{page number in head/foot}%
+    \usebeamertemplate*{frame footer}
+    \hfill%
+    \usebeamertemplate*{frame numbering}
+  \end{beamercolorbox}%
+} 
 
 \setbeamertemplate{footline}
 {
@@ -163,5 +144,3 @@
 \sag@outer@setdefaults
 \ProcessPgfPackageOptions{/sag/outer}
 \endinput
-%%
-%% End of file `beamerouterthemesag.sty'.
